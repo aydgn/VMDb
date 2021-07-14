@@ -1,6 +1,6 @@
 <template>
   <HeaderComp />
-  <h1>Hello!</h1>
+  <h1>Hi</h1>
 </template>
 
 <script>
@@ -11,3 +11,21 @@ export default {
   setup() {},
 };
 </script>
+
+<style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: $bg;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+</style>
