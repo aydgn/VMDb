@@ -1,13 +1,7 @@
 <template>
-  <header class="header">
+  <header class="header container">
     <div class="header__bar">
-      <a href="#">
-        <img
-          src="../assets/images/vmdb.svg"
-          alt="VMDb Logo"
-          class="header__logo"
-        />
-      </a>
+      <Logo />
 
       <HamburgerMenuIcon @menuStatus="toggleMenu" :openStatus="isMenuOpen" />
     </div>
@@ -23,7 +17,7 @@
       <a href="#" class="header__link">Register</a>
       <input
         type="search"
-        placeholder="Search..."
+        placeholder="Search 🔎"
         class="header__search"
         name="q"
         autocomplete="off"
@@ -34,11 +28,12 @@
 </template>
 
 <script>
-import HamburgerMenuIcon from "./HamburgerMenuIcon.vue";
+import HamburgerMenuIcon from "./MenuIcon.vue";
+import Logo from "../Logo.vue";
 import { ref } from "vue";
 
 export default {
-  components: { HamburgerMenuIcon },
+  components: { HamburgerMenuIcon, Logo },
   setup() {
     let isMenuOpen = ref(false);
 
@@ -84,10 +79,13 @@ export default {
 
   &__search {
     padding: 1rem;
+    outline: 0;
+    border: 0;
     &:focus {
       background: $green;
       color: #fff;
       font-weight: bold;
+      outline: 1px solid #fff;
     }
     &:focus::placeholder {
       color: #fff;
