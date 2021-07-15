@@ -2,7 +2,7 @@
   <header class="header container">
     <div class="header__bar">
       <Logo />
-      <HamburgerMenuIcon @menuStatus="toggleMenu" :openStatus="isMenuOpen" />
+      <HamburgerMenuIcon @menuStatus="toggleMenu" :activeStatus="isMenuOpen" />
     </div>
 
     <nav class="header__nav" v-if="isMenuOpen">
