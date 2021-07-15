@@ -34,13 +34,13 @@ export default {
 .footer {
   &__bar {
     display: flex;
+    gap: 0.5rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     text-align: center;
 
-    @include mq(tablet) {
+    @include mq(mobile) {
       flex-direction: row;
     }
   }
@@ -49,7 +49,7 @@ export default {
     display: flex;
     gap: 0.5rem;
     img {
-      height: 30px;
+      height: 20px;
       filter: invert(100%);
     }
   }

@@ -2,7 +2,6 @@
   <header class="header container">
     <div class="header__bar">
       <Logo />
-
       <HamburgerMenuIcon @menuStatus="toggleMenu" :openStatus="isMenuOpen" />
     </div>
 
@@ -21,7 +20,6 @@
         class="header__search"
         name="q"
         autocomplete="off"
-        autofocus
       />
     </div>
   </header>

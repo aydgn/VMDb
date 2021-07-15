@@ -25,6 +25,9 @@ export default {
   width: 32px;
   height: 32px;
   cursor: pointer;
+  @include mq(tablet) {
+    display: none;
+  }
 
   div {
     position: relative;
