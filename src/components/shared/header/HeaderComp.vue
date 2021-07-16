@@ -2,16 +2,15 @@
   <header class="header container">
     <div class="header__bar">
       <Logo />
-      <HamburgerMenuIcon @menuStatus="toggleMenu" :activeStatus="isMenuOpen" />
+      <MenuIcon @menuStatus="toggleMenu" :activeStatus="isMenuOpen" />
     </div>
 
-    <nav class="header__nav" v-if="isMenuOpen">
+    <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">TV Shows</a>
       <a href="#" class="header__link">Movies</a>
       <a href="#" class="header__link">Upcoming</a>
     </nav>
-
-    <div class="header__nav" v-if="isMenuOpen">
+    <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
       <a href="#" class="header__link">Register</a>
       <input
@@ -21,17 +20,17 @@
         name="q"
         autocomplete="off"
       />
-    </div>
+    </nav>
   </header>
 </template>
 
 <script>
-import HamburgerMenuIcon from "./MenuIcon.vue";
+import MenuIcon from "./MenuIcon.vue";
 import Logo from "../Logo.vue";
 import { ref } from "vue";
 
 export default {
-  components: { HamburgerMenuIcon, Logo },
+  components: { MenuIcon, Logo },
   setup() {
     let isMenuOpen = ref(false);
 
@@ -51,9 +50,20 @@ export default {
 .header {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   padding: 1rem;
-  font-weight: bold;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    font-weight: bold;
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 
   &__link {
     color: #fff;
@@ -64,15 +74,17 @@ export default {
     }
   }
 
-  &__bar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
   &__nav {
-    display: flex;
+    display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    @include mq(tablet) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__search {
@@ -88,6 +100,10 @@ export default {
     &:focus::placeholder {
       color: #fff;
     }
+  }
+
+  .active {
+    display: flex;
   }
 }
 </style>

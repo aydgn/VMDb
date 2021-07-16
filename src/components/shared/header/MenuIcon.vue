@@ -1,7 +1,7 @@
 <template>
   <div
     class="hamburger"
-    :class="{ active: openStatus }"
+    :class="{ activeMenu: activeStatus }"
     @click="$emit('menuStatus')"
   >
     <div class="line1"></div>
@@ -13,7 +13,7 @@
 <script>
 export default {
   emits: ["menuStatus"],
-  props: ["openStatus"],
+  props: ["activeStatus"],
   setup() {
     return {};
   },
@@ -25,6 +25,10 @@ export default {
   width: 32px;
   height: 32px;
   cursor: pointer;
+
+  @include mq(tablet) {
+    display: none;
+  }
 
   div {
     position: relative;
@@ -45,7 +49,7 @@ export default {
   }
 }
 
-.active {
+.activeMenu {
   .line1 {
     top: 14px;
     transform: rotate(45deg);
