@@ -8,13 +8,18 @@
         :key="person.id"
         class="popularActors__actor"
       >
-        <span class="popularActors__initials">
-          {{
+        <span
+          class="popularActors__initials"
+          :style="`
+            background-image: url(https://image.tmdb.org/t/p/w92${person.profile_path});
+          `"
+        >
+          <!-- {{
             person.name
               .split(" ")
               .map(i => i[0])
               .join("")
-          }}
+          }} -->
         </span>
 
         <span class="popularActors__name">
@@ -57,7 +62,7 @@ export default {
 .popularActors {
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   }
 
   a {
@@ -69,10 +74,10 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 8px;
+    padding: 0.5rem;
     background: $gray;
-    margin: 2px;
-    border-radius: 5px;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
   }
 
   &__actor:hover {
@@ -81,9 +86,13 @@ export default {
 
   &__initials {
     background: $green;
-    padding: 8px;
+    padding: 0.5rem;
     border-radius: 99px;
-    margin-right: 8px;
+    margin-right: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    background-position: center 20%;
+    background-size: 100%;
   }
 }
 </style>
