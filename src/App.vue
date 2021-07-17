@@ -1,18 +1,31 @@
 <template>
   <HeaderComp />
-
-  <main class="main container">
-    <h1>👋</h1>
+  <main class="main">
+    <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
+    <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
+    <PopularActors />
+    <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
+    <UpcommingMovies />
+    <Footer />
   </main>
-  <Footer />
 </template>
 
 <script>
 import HeaderComp from "./components/shared/header/HeaderComp.vue";
 import Footer from "./components/shared/footer/Footer.vue";
+import MovieTiles from "./components/shared/MovieTiles.vue";
+import PopularActors from "./components/shared/PopularActors.vue";
+import UpcommingMovies from "./components/shared/UpcommingMovies.vue";
 
 export default {
-  components: { HeaderComp, Footer },
+  components: {
+    HeaderComp,
+    Footer,
+    MovieTiles,
+    PopularActors,
+    UpcommingMovies,
+  },
+
   setup() {},
 };
 </script>
@@ -41,6 +54,11 @@ body {
   margin-left: auto;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;

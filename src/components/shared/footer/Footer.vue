@@ -10,13 +10,22 @@
       </div>
       <div class="footer__social">
         <a href="#">
-          <img src="../../../assets/images/social-icons/facebook.svg" />
+          <img
+            src="../../../assets/images/social-icons/facebook.svg"
+            alt="Facebook Logo"
+          />
         </a>
         <a href="#">
-          <img src="../../../assets/images/social-icons/instagram.svg" />
+          <img
+            src="../../../assets/images/social-icons/instagram.svg"
+            alt="Instagram Logo"
+          />
         </a>
         <a href="#">
-          <img src="../../../assets/images/social-icons/twitter.svg" />
+          <img
+            src="../../../assets/images/social-icons/twitter.svg"
+            alt="Twitter Logo"
+          />
         </a>
       </div>
     </div>
@@ -39,6 +48,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    padding: 1rem 0;
 
     @include mq(mobile) {
       flex-direction: row;
