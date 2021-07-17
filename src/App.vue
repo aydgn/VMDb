@@ -1,11 +1,10 @@
 <template>
   <HeaderComp />
-
   <main class="main container">
-    <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
     <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
+    <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
     <PopularActors />
-    <MovieTiles title="Recommended Movies" apiQuery="movie/top_rated" />
+    <MovieTiles title="Recommended Movies" apiQuery="movie/popular" />
     <Footer />
   </main>
 </template>

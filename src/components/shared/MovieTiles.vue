@@ -23,6 +23,9 @@
         <span class="movieTile__type" :title="data.media_type">
           {{ data.media_type == "tv" ? "📺" : "🎥" }}
         </span>
+        <span class="movieTile__rating" :title="data.vote_average">
+          {{ data.vote_average }} / 10
+        </span>
       </a>
     </div>
   </section>
@@ -107,6 +110,14 @@ export default {
     position: absolute;
     bottom: 8px;
     left: 8px;
+    padding: 5px;
+    background-color: rgba(#000, 0.2);
+    font-size: 12px;
+  }
+  &__rating {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
     padding: 5px;
     background-color: rgba(#000, 0.2);
     font-size: 12px;
