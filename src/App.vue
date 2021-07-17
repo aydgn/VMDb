@@ -28,13 +28,13 @@
 import { onMounted, ref } from "vue";
 import HeaderComp from "./components/shared/header/HeaderComp.vue";
 import Footer from "./components/shared/footer/Footer.vue";
-import { apikey } from "/env.js";
 
 export default {
   components: { HeaderComp, Footer },
 
   setup() {
     let trendingTv = ref([""]);
+    const apikey = import.meta.env.VITE_KEY;
 
     // fetch trending shows
     async function fetchTrendingShows() {
