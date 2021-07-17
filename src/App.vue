@@ -92,20 +92,43 @@ body {
 
 .movieTile {
   display: flex;
+
   flex-direction: row;
   gap: 1rem;
-  text-align: center;
-  overflow: auto;
+
   padding: 1rem 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #404040 #5e5e5e;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #404040;
+  }
 
   &__link {
     color: #fff;
     text-decoration: none;
     transition: all 50ms ease;
+    position: relative;
 
     &:hover {
       transform: scale(1.05);
     }
+  }
+
+  &__name {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(#000, 0.2);
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    text-shadow: 1px 1px 0 #404040;
   }
 }
 </style>
