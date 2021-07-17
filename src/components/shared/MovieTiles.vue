@@ -9,11 +9,14 @@
     >
       <img
         :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
-        :alt="data.name"
-        :title="data.name"
+        :alt="data.name || data.title"
+        :title="data.name || data.title"
         class="movieTile__poster"
+        loading="lazy"
       />
-      <span class="movieTile__name">{{ index + 1 }}. {{ data.name }}</span>
+      <span class="movieTile__name">
+        {{ index + 1 }}. {{ data.name || data.title || data.title }}
+      </span>
     </a>
   </div>
 </template>
@@ -50,10 +53,8 @@ export default {
 <style lang="scss" scoped>
 .movieTile {
   display: flex;
-
   flex-direction: row;
   gap: 1rem;
-
   padding: 1rem 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -78,6 +79,12 @@ export default {
     }
   }
 
+  &__poster {
+    width: 200px;
+    &:hover {
+      border: 2px solid $green;
+    }
+  }
   &__name {
     position: absolute;
     top: 0px;
