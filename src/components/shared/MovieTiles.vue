@@ -6,6 +6,7 @@
       :key="data.id"
       :href="data.id"
       class="movieTile__link"
+      draggable="false"
     >
       <img
         :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
@@ -13,9 +14,13 @@
         :title="data.name || data.title"
         class="movieTile__poster"
         loading="lazy"
+        draggable="false"
       />
       <span class="movieTile__name">
-        {{ index + 1 }}. {{ data.name || data.title || data.title }}
+        {{ index + 1 }}. {{ data.name || data.title }}
+      </span>
+      <span class="movieTile__type" :title="data.media_type">
+        {{ data.media_type == "tv" ? "📺" : "🎥" }}
       </span>
     </a>
   </div>
@@ -55,10 +60,12 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scrollbar-color: #404040 #5e5e5e;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     height: 8px;
@@ -80,7 +87,7 @@ export default {
   }
 
   &__poster {
-    width: 200px;
+    width: 190px;
     &:hover {
       border: 2px solid $green;
     }
@@ -94,6 +101,14 @@ export default {
     width: 100%;
     text-align: center;
     text-shadow: 1px 1px 0 #404040;
+  }
+  &__type {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    padding: 5px;
+    background-color: rgba(#000, 0.2);
+    font-size: 12px;
   }
 }
 </style>
