@@ -1,29 +1,31 @@
 <template>
-  <h2>{{ title }}</h2>
-  <div class="movieTile">
-    <a
-      v-for="(data, index) in apiData"
-      :key="data.id"
-      :href="data.id"
-      class="movieTile__link"
-      draggable="false"
-    >
-      <img
-        :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
-        :alt="data.name || data.title"
-        :title="data.name || data.title"
-        class="movieTile__poster"
-        loading="lazy"
+  <section class="movieTile">
+    <h2>{{ title }}</h2>
+    <div class="movieTile__tile">
+      <a
+        v-for="(data, index) in apiData"
+        :key="data.id"
+        :href="data.id"
+        class="movieTile__link"
         draggable="false"
-      />
-      <span class="movieTile__name">
-        {{ index + 1 }}. {{ data.name || data.title }}
-      </span>
-      <span class="movieTile__type" :title="data.media_type">
-        {{ data.media_type == "tv" ? "📺" : "🎥" }}
-      </span>
-    </a>
-  </div>
+      >
+        <img
+          :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
+          :alt="data.name || data.title"
+          :title="data.name || data.title"
+          class="movieTile__poster"
+          loading="lazy"
+          draggable="false"
+        />
+        <span class="movieTile__name">
+          {{ index + 1 }}. {{ data.name || data.title }}
+        </span>
+        <span class="movieTile__type" :title="data.media_type">
+          {{ data.media_type == "tv" ? "📺" : "🎥" }}
+        </span>
+      </a>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -57,22 +59,21 @@ export default {
 
 <style lang="scss" scoped>
 .movieTile {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  padding: 1rem 0.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: #404040 #5e5e5e;
-  scroll-behavior: smooth;
+  &__tile {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #404040;
+    &::-webkit-scrollbar-thumb {
+      background-color: #404040;
+    }
   }
 
   &__link {

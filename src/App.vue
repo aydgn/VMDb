@@ -4,6 +4,8 @@
   <main class="main container">
     <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
     <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
+    <PopularActors />
+    <MovieTiles title="Recommended Movies" apiQuery="movie/top_rated" />
     <Footer />
   </main>
 </template>
@@ -12,9 +14,10 @@
 import HeaderComp from "./components/shared/header/HeaderComp.vue";
 import Footer from "./components/shared/footer/Footer.vue";
 import MovieTiles from "./components/shared/MovieTiles.vue";
+import PopularActors from "./components/shared/PopularActors.vue";
 
 export default {
-  components: { HeaderComp, Footer, MovieTiles },
+  components: { HeaderComp, Footer, MovieTiles, PopularActors },
 
   setup() {},
 };
@@ -44,6 +47,11 @@ body {
   margin-left: auto;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;
