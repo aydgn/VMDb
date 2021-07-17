@@ -1,6 +1,6 @@
 <template>
   <HeaderComp />
-  <main class="main container">
+  <main class="main">
     <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
     <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
     <PopularActors />

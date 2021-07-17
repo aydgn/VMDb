@@ -1,5 +1,5 @@
 <template>
-  <section class="upcommingMovies">
+  <section class="upcommingMovies container">
     <h2>Upcomming Movies</h2>
     <div class="upcommingMovies__tile">
       <a

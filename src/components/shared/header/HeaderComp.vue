@@ -52,11 +52,13 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+
   padding: 1rem;
 
   @include mq(tablet) {
     flex-direction: row;
     font-weight: bold;
+    align-items: center;
   }
 
   &__bar {

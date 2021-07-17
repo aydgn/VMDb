@@ -1,7 +1,7 @@
 <template>
   <section class="movieTile">
-    <h2>{{ title }}</h2>
-    <div class="movieTile__tile">
+    <h2 class="container">{{ title }}</h2>
+    <div class="movieTile__tile container">
       <a
         v-for="(data, index) in apiData"
         :key="data.id"
@@ -62,11 +62,12 @@ export default {
 
 <style lang="scss" scoped>
 .movieTile {
+  background: $lightbg;
   &__tile {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    padding: 1rem;
+    padding: 2rem 1rem;
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -75,7 +76,7 @@ export default {
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #404040;
+      background-color: $gray;
     }
   }
 

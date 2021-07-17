@@ -1,5 +1,5 @@
 <template>
-  <section class="popularActors">
+  <section class="popularActors container">
     <h2>Popular Actors</h2>
     <div class="popularActors__list">
       <a
@@ -93,6 +93,7 @@ export default {
     width: 3rem;
     background-position: center 20%;
     background-size: 100%;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
   }
 }
 </style>
