@@ -65,8 +65,8 @@ export default {
   &__tile {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    padding: 1rem 0.5rem;
+    gap: 2rem;
+    padding: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -91,9 +91,11 @@ export default {
   }
 
   &__poster {
-    width: 190px;
+    width: 200px;
+    box-shadow: 0 5px 20px #000;
+
     &:hover {
-      border: 2px solid $green;
+      outline: 4px solid $green;
     }
   }
   &__name {
