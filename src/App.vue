@@ -2,18 +2,61 @@
   <HeaderComp />
 
   <main class="main container">
-    <h1>👋</h1>
+    <h2>Trending TV Shows</h2>
+
+    <div class="movieTile">
+      <a
+        v-for="(show, index) in trendingTv"
+        :key="show.id"
+        :href="show.id"
+        class="movieTile__link"
+      >
+        <img
+          :src="`https://image.tmdb.org/t/p/w200${show.poster_path}`"
+          :alt="show.name"
+          :title="show.name"
+          class="movieTile__poster"
+        />
+        <span class="movieTile__name">{{ index + 1 }}. {{ show.name }}</span>
+      </a>
+    </div>
   </main>
   <Footer />
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
 import HeaderComp from "./components/shared/header/HeaderComp.vue";
 import Footer from "./components/shared/footer/Footer.vue";
+import { apikey } from "/env.js";
 
 export default {
   components: { HeaderComp, Footer },
-  setup() {},
+
+  setup() {
+    let trendingTv = ref([""]);
+
+    // fetch trending shows
+    async function fetchTrendingShows() {
+      await fetch(
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=${apikey}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          trendingTv.value = data.results;
+        })
+        .then(() => {
+          console.log(trendingTv);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    onMounted(fetchTrendingShows);
+    return {
+      trendingTv,
+    };
+  },
 };
 </script>
 
@@ -44,6 +87,25 @@ body {
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;
+  }
+}
+
+.movieTile {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  text-align: center;
+  overflow: auto;
+  padding: 1rem 0;
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    transition: all 50ms ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 </style>
