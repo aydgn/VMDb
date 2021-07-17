@@ -6,9 +6,9 @@
     </div>
 
     <nav class="header__nav" :class="{ active: isMenuOpen }">
-      <a href="#" class="header__link">TV Shows</a>
-      <a href="#" class="header__link">Movies</a>
-      <a href="#" class="header__link">Upcoming</a>
+      <router-link to="/about" class="header__link">TV Shows</router-link>
+      <router-link to="/about" class="header__link">Movies</router-link>
+      <router-link to="/about" class="header__link">Upcoming</router-link>
     </nav>
     <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
