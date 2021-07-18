@@ -50,13 +50,16 @@ export default {
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: stretch;
   text-align: center;
   padding: 1rem;
 
   @include mq(tablet) {
     flex-direction: row;
-    font-weight: bold;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -64,6 +67,14 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+
+    @include mq(tablet) {
+      margin-bottom: 0;
+    }
   }
 
   &__link {

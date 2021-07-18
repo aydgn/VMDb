@@ -1,6 +1,9 @@
 <template>
-  <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
-  <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
+  <MovieTiles
+    title="This Week's Trending Movies"
+    apiQuery="trending/movie/week"
+  />
+  <MovieTiles title="Today's Trending Movies" apiQuery="trending/movie/day" />
   <PopularActors />
   <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
   <UpcommingMovies />

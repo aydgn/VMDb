@@ -93,6 +93,7 @@ export default {
 
   &__poster {
     width: 200px;
+    height: 300px;
     box-shadow: 0 5px 20px #000;
 
     &:hover {

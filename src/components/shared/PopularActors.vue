@@ -3,7 +3,7 @@
     <h2>Popular Actors</h2>
     <div class="popularActors__list">
       <a
-        :href="person.id"
+        href="#"
         v-for="person in apiData"
         :key="person.id"
         class="popularActors__actor"
@@ -13,14 +13,7 @@
           :style="`
             background-image: url(https://image.tmdb.org/t/p/w92${person.profile_path});
           `"
-        >
-          <!-- {{
-            person.name
-              .split(" ")
-              .map(i => i[0])
-              .join("")
-          }} -->
-        </span>
+        ></span>
 
         <span class="popularActors__name">
           {{ person.name }}
