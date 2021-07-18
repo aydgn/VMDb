@@ -4,7 +4,6 @@ import {
 } from "vue-router";
 
 import Home from "@/pages/Home.vue"
-import About from "@/pages/About.vue"
 
 const routes = [{
     path: "/",
@@ -13,9 +12,9 @@ const routes = [{
 
   },
   {
-    path: "/about",
-    name: "about",
-    component: About
+    path: "/detail/:id",
+    name: "detail",
+    component: () => import("@/pages/Detail.vue")
   }
 ]
 

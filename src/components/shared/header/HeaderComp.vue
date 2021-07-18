@@ -6,9 +6,9 @@
     </div>
 
     <nav class="header__nav" :class="{ active: isMenuOpen }">
-      <router-link to="/about" class="header__link">TV Shows</router-link>
-      <router-link to="/about" class="header__link">Movies</router-link>
-      <router-link to="/about" class="header__link">Upcoming</router-link>
+      <router-link to="#" class="header__link">TV Shows</router-link>
+      <router-link to="#" class="header__link">Movies</router-link>
+      <router-link to="#" class="header__link">Upcoming</router-link>
     </nav>
     <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
@@ -52,7 +52,6 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-
   padding: 1rem;
 
   @include mq(tablet) {
@@ -93,6 +92,7 @@ export default {
     padding: 1rem;
     outline: 0;
     border: 0;
+    border-radius: 0;
     &:focus {
       background: $green;
       color: #fff;

@@ -2,10 +2,10 @@
   <section class="movieTile">
     <h2 class="container">{{ title }}</h2>
     <div class="movieTile__tile container">
-      <a
+      <router-link
         v-for="(data, index) in apiData"
         :key="data.id"
-        :href="data.id"
+        :to="`/detail/${data.id}`"
         class="movieTile__link"
         draggable="false"
       >
@@ -26,7 +26,7 @@
         <span class="movieTile__rating" :title="data.vote_average">
           {{ data.vote_average }} / 10
         </span>
-      </a>
+      </router-link>
     </div>
   </section>
 </template>
