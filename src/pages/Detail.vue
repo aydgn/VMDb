@@ -15,15 +15,15 @@
             :src="`https://image.tmdb.org/t/p/w200${apiData.poster_path}`"
             :alt="apiData.title"
             :title="apiData.title"
+            class="hero__image"
           />
         </a>
         <div class="hero__row">
           <span class="hero__rating" alt="Rating" title="Rating">
-            <b>⭐:</b>
             {{ apiData.vote_average }} / 10
           </span>
           <span class="hero__runtime" alt="Rating" title="Time">
-            <b>⏱:</b>
+            <b>⏱</b>
             {{ apiData.runtime }} min
           </span>
         </div>
@@ -95,7 +95,6 @@ export default {
     align-items: center;
 
     @include mq(tablet) {
-      align-items: flex-end;
       width: 200px;
     }
   }
@@ -119,14 +118,20 @@ export default {
     flex-direction: row;
     gap: 0.5rem;
     flex-wrap: wrap;
-    margin: 0.5rem;
     justify-content: center;
+    align-items: baseline;
+    margin: 0.5rem;
 
     @include mq(tablet) {
       justify-content: flex-end;
     }
   }
 
+  &__image {
+    box-shadow: 0 0 30px 1px #000;
+    height: auto;
+    width: 200px;
+  }
   &__title {
     font-size: 2rem;
     margin: 0;
