@@ -1,29 +1,19 @@
 <template>
   <HeaderComp />
   <main class="main">
-    <MovieTiles title="Trending Movies" apiQuery="trending/movie/week" />
-    <MovieTiles title="Trending TV Shows" apiQuery="trending/tv/week" />
-    <PopularActors />
-    <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
-    <UpcommingMovies />
-    <Footer />
+    <router-view></router-view>
   </main>
+  <Footer />
 </template>
 
 <script>
-import HeaderComp from "./components/shared/header/HeaderComp.vue";
-import Footer from "./components/shared/footer/Footer.vue";
-import MovieTiles from "./components/shared/MovieTiles.vue";
-import PopularActors from "./components/shared/PopularActors.vue";
-import UpcommingMovies from "./components/shared/UpcommingMovies.vue";
+import HeaderComp from "@/components/shared/header/HeaderComp.vue";
+import Footer from "@/components/shared/footer/Footer.vue";
 
 export default {
   components: {
     HeaderComp,
     Footer,
-    MovieTiles,
-    PopularActors,
-    UpcommingMovies,
   },
 
   setup() {},
