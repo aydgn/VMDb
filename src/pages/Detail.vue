@@ -29,14 +29,16 @@
         </div>
 
         <div class="hero__genres">
-          <a
+          <router-link
+            to="#"
             class="hero__genre"
+            :alt="genre.name"
+            :title="genre.name"
             v-for="genre in apiData.genres"
             :key="genre.id"
-            href="#"
           >
             {{ genre.name }}
-          </a>
+          </router-link>
         </div>
       </div>
       <div class="hero__details">
@@ -84,7 +86,7 @@ export default {
 .hero {
   position: relative;
   background-size: cover;
-  background-position: center 0%;
+  background-position: center 20%;
   background-repeat: no-repeat;
   min-height: 650px;
   padding: 2rem 1rem;
@@ -125,6 +127,14 @@ export default {
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
   &__title {
     font-size: 2rem;
