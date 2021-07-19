@@ -1,7 +1,12 @@
 <template>
-  <router-link to="/" class="logo">
-    <img src="../../assets/images/vmdb.svg" alt="VMDb Logo" class="logo__img" />
-  </router-link>
+  <a href="/" class="logo">
+    <img
+      src="../../assets/images/vmdb.svg"
+      alt="VMDb Logo"
+      title="VMDb - Vue Movie Database"
+      class="logo__img"
+    />
+  </a>
 </template>
 
 <style lang="scss" scoped>

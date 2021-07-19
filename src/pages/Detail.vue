@@ -67,7 +67,6 @@
         class="cast__item"
       >
         <a
-          v-if="actor"
           :href="`https://image.tmdb.org/t/p/original${actor.profile_path}`"
           :title="actor.name"
           :alt="actor.name"
@@ -78,6 +77,7 @@
             :alt="actor.name"
             :title="actor.name"
             class="cast__image"
+            loading="lazy"
           />
         </a>
         <div class="cast__info">
