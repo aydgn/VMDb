@@ -13,13 +13,7 @@
     <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
       <a href="#" class="header__link">Register</a>
-      <input
-        type="search"
-        placeholder="Search 🔎"
-        class="header__search"
-        name="q"
-        autocomplete="off"
-      />
+      <SearchBar />
     </nav>
   </header>
 </template>
@@ -27,10 +21,11 @@
 <script>
 import MenuIcon from "./MenuIcon.vue";
 import Logo from "../Logo.vue";
+import SearchBar from "./SearchBar.vue";
 import { ref } from "vue";
 
 export default {
-  components: { MenuIcon, Logo },
+  components: { MenuIcon, Logo, SearchBar },
   setup() {
     let isMenuOpen = ref(false);
 
@@ -98,25 +93,9 @@ export default {
       align-items: center;
     }
   }
+}
 
-  &__search {
-    padding: 1rem;
-    outline: 0;
-    border: 0;
-    border-radius: 0;
-    &:focus {
-      background: $green;
-      color: #fff;
-      font-weight: bold;
-      outline: 1px solid #fff;
-    }
-    &:focus::placeholder {
-      color: #fff;
-    }
-  }
-
-  .active {
-    display: flex;
-  }
+.active {
+  display: flex;
 }
 </style>
