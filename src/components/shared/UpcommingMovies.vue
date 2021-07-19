@@ -2,10 +2,10 @@
   <section class="upcommingMovies container">
     <h2>Upcomming Movies</h2>
     <div class="upcommingMovies__tile">
-      <a
+      <router-link
         v-for="data in apiData"
         :key="data.id"
-        :href="data.id"
+        :to="`/detail/${data.id}`"
         class="upcommingMovies__link"
         draggable="false"
       >
@@ -24,7 +24,7 @@
           <!-- data.release_date in DD/MM/YYY format -->
           {{ data.release_date }}
         </span>
-      </a>
+      </router-link>
     </div>
   </section>
 </template>

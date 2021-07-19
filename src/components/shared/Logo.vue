@@ -1,13 +1,7 @@
 <template>
-  <div class="logo">
-    <a href="/" class="logo">
-      <img
-        src="../../assets/images/vmdb.svg"
-        alt="VMDb Logo"
-        class="logo__img"
-      />
-    </a>
-  </div>
+  <router-link to="/" class="logo">
+    <img src="../../assets/images/vmdb.svg" alt="VMDb Logo" class="logo__img" />
+  </router-link>
 </template>
 
 <style lang="scss" scoped>

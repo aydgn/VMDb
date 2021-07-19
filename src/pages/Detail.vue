@@ -1,7 +1,7 @@
 <template>
   <section
     class="hero"
-    :style="`background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path});`"
+    :style="`background-image: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path});`"
   >
     <div class="hero__info container">
       <div class="hero__poster">
@@ -55,6 +55,46 @@
       </div>
     </div>
   </section>
+
+  <!-- CAST -->
+
+  <section class="cast container">
+    <h2>Cast</h2>
+    <div class="cast__wrapper">
+      <div
+        v-for="actor in apiData.credits.cast.slice(0, 12)"
+        :key="actor.id"
+        class="cast__item"
+      >
+        <a
+          v-if="actor"
+          :href="`https://image.tmdb.org/t/p/original${actor.profile_path}`"
+          :title="actor.name"
+          :alt="actor.name"
+          target="_blank"
+        >
+          <img
+            :src="`https://image.tmdb.org/t/p/w92${actor.profile_path}`"
+            :alt="actor.name"
+            :title="actor.name"
+            class="cast__image"
+          />
+        </a>
+        <div class="cast__info">
+          <a
+            :href="`https://www.themoviedb.org/person/${actor.id}`"
+            :title="actor.name"
+            :alt="actor.name"
+            target="_blank"
+            class="cast__link"
+          >
+            <span class="cast__name">{{ actor.name }}</span>
+          </a>
+          <span class="cast__role">as {{ actor.character }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -81,7 +121,7 @@ export default {
         });
     };
 
-    onMounted(fetchApiData);
+    onMounted(fetchApiData());
     return {
       apiData,
     };
@@ -198,6 +238,58 @@ export default {
       font-size: 18px;
       line-height: 30px;
     }
+  }
+}
+
+.cast {
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+  }
+
+  &__image {
+    height: 92px;
+    width: 92px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 300px;
+    border-radius: 100px;
+  }
+  &__item:hover {
+    background: $green;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__role {
+    color: $gray;
   }
 }
 </style>
