@@ -83,7 +83,7 @@
           <!-- IMDB -->
 
           <a
-            v-if="apiData.imdb_id"
+            v-if="apiData.external_ids.imdb_id"
             :href="`https://imdb.com/title/${apiData.external_ids.imdb_id}`"
             target="_blank"
             class="hero__social"
@@ -105,7 +105,7 @@
 
           <!-- FACEBOOK -->
           <a
-            v-if="apiData.facebook_id"
+            v-if="apiData.external_ids.facebook_id"
             :href="`https://facebook.com/${apiData.external_ids.facebook_id}`"
             target="_blank"
             class="hero__social"
@@ -128,7 +128,7 @@
           <!-- TWITTER -->
 
           <a
-            v-if="apiData.twitter_id"
+            v-if="apiData.external_ids.twitter_id"
             :href="`https://twitter.com/${apiData.external_ids.twitter_id}`"
             target="_blank"
             class="hero__social"
@@ -151,7 +151,7 @@
           <!-- INSTAGRAM -->
 
           <a
-            v-if="apiData.instagram_id"
+            v-if="apiData.external_ids.instagram_id"
             :href="`https://instagram.com/${apiData.external_ids.instagram_id}`"
             target="_blank"
             class="hero__social"
