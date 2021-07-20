@@ -6,19 +6,19 @@
   <MovieTiles title="Today's Trending Movies" apiQuery="trending/movie/day" />
   <PopularActors />
   <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
-  <UpcommingMovies />
+  <UpcomingMovies />
 </template>
 
 <script>
 import MovieTiles from "@/components/shared/MovieTiles.vue";
 import PopularActors from "@/components/shared/PopularActors.vue";
-import UpcommingMovies from "@/components/shared/UpcommingMovies.vue";
+import UpcomingMovies from "@/components/shared/UpcomingMovies.vue";
 
 export default {
   components: {
     MovieTiles,
     PopularActors,
-    UpcommingMovies,
+    UpcomingMovies,
   },
 
   setup() {},
