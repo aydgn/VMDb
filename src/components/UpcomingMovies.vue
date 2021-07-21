@@ -77,10 +77,10 @@ export default {
   }
 
   &__link {
+    position: relative;
     color: #fff;
     text-decoration: none;
     transition: all 50ms ease;
-    position: relative;
 
     &:hover {
       transform: scale(1.05);
@@ -89,29 +89,32 @@ export default {
 
   &__poster {
     width: 190px;
+
     &:hover {
       border: 2px solid $green;
     }
   }
+
   &__name {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(#000, 0.2);
-    padding: 5px;
-    width: 100%;
-    text-align: center;
-    text-shadow: 1px 1px 0 #404040;
-  }
-  &__date {
-    position: absolute;
-    bottom: 0px;
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(#000, 0.2);
     padding: 5px;
     text-align: center;
     text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
+  }
+
+  &__date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
   }
 }
 </style>

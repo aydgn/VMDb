@@ -67,9 +67,9 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0.25rem;
     padding: 0.5rem;
     background: $gray;
-    margin: 0.25rem;
     border-radius: 0.25rem;
   }
 
@@ -78,14 +78,14 @@ export default {
   }
 
   &__initials {
-    background: $green;
-    padding: 0.5rem;
-    border-radius: 99px;
-    margin-right: 0.5rem;
-    height: 3rem;
     width: 3rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    background: $green;
     background-position: center 20%;
     background-size: 100%;
+    border-radius: 99px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
   }
 }

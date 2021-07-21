@@ -31,17 +31,17 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: $bg;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  background: $bg;
 }
 
 .container {
   width: 100%;
-  padding: 0 1rem;
   margin-right: auto;
   margin-left: auto;
+  padding: 0 1rem;
 }
 
 main {
@@ -49,6 +49,7 @@ main {
   flex-direction: column;
   gap: 3rem;
 }
+
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;

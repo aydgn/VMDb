@@ -63,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 .movieTile {
   background: $lightbg;
+
   &__tile {
     display: flex;
     flex-direction: row;
@@ -81,10 +82,10 @@ export default {
   }
 
   &__link {
+    position: relative;
     color: #fff;
     text-decoration: none;
     transition: all 50ms ease;
-    position: relative;
 
     &:hover {
       transform: scale(1.05);
@@ -100,31 +101,34 @@ export default {
       outline: 4px solid $green;
     }
   }
+
   &__name {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(#000, 0.2);
-    padding: 5px;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 5px;
     text-align: center;
     text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
   }
+
   &__type {
     position: absolute;
     bottom: 8px;
     left: 8px;
     padding: 5px;
-    background-color: rgba(#000, 0.2);
     font-size: 12px;
+    background-color: rgba(#000, 0.2);
   }
+
   &__rating {
     position: absolute;
-    bottom: 8px;
     right: 8px;
+    bottom: 8px;
     padding: 5px;
-    background-color: rgba(#000, 0.2);
     font-size: 12px;
+    background-color: rgba(#000, 0.2);
   }
 }
 </style>

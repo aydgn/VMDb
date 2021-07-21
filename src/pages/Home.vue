@@ -12,7 +12,7 @@
 <script>
 import MovieTiles from "@/components/shared/MovieTiles.vue";
 import PopularActors from "@/components/shared/PopularActors.vue";
-import UpcomingMovies from "@/components/shared/UpcomingMovies.vue";
+import UpcomingMovies from "@/components/UpcomingMovies.vue";
 
 export default {
   components: {
@@ -36,18 +36,19 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: $bg;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  background: $bg;
 }
 
 .container {
   width: 100%;
-  padding: 0 1rem;
   margin-right: auto;
   margin-left: auto;
+  padding: 0 1rem;
 }
+
 @media (min-width: 1400px) {
   .container {
     max-width: 1320px;

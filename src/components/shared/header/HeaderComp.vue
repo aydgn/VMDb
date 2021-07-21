@@ -45,27 +45,27 @@ export default {
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   flex-wrap: nowrap;
   align-content: stretch;
   align-items: stretch;
-  text-align: center;
+  justify-content: flex-start;
   padding: 1rem;
+  text-align: center;
 
   @include mq(tablet) {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__bar {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 
     @include mq(tablet) {
       margin-bottom: 0;
@@ -73,9 +73,9 @@ export default {
   }
 
   &__link {
+    padding: 1rem;
     color: #fff;
     text-decoration: none;
-    padding: 1rem;
     &:hover {
       background: $green;
     }
@@ -84,8 +84,8 @@ export default {
   &__nav {
     display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: stretch;
+    justify-content: center;
 
     @include mq(tablet) {
       display: flex;

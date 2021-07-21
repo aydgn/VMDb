@@ -39,15 +39,17 @@ export default {
 <style lang="scss" scoped>
 .search {
   padding: 1rem;
-  outline: 0;
   border: 0;
   border-radius: 0;
+  outline: 0;
+
   &:focus {
-    background: $green;
     color: #fff;
     font-weight: bold;
+    background: $green;
     outline: 1px solid #fff;
   }
+
   &:focus::placeholder {
     color: #fff;
   }

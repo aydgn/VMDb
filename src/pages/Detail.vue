@@ -1,7 +1,7 @@
 <template>
   <section
     class="hero"
-    :style="`background-image: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path});`"
+    :style="`background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, #000 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path});`"
   >
     <div class="hero__info container">
       <!-- POSTER  -->
@@ -251,13 +251,13 @@ export default {
 <style lang="scss" scoped>
 .hero {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
+  justify-content: center;
   min-height: 650px;
-  background-size: cover;
-  background-position: center 20%;
+  padding: 2rem 1rem;
   background-repeat: no-repeat;
+  background-position: center 20%;
+  background-size: cover;
 
   &__poster {
     display: flex;
@@ -272,23 +272,23 @@ export default {
   &__info {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
+    align-items: center;
 
     @include mq(tablet) {
       flex-direction: row;
-      justify-content: center;
       gap: 2rem;
       align-items: center;
+      justify-content: center;
     }
   }
 
   &__image {
-    box-shadow: 0 0 30px 1px #000;
-    height: auto;
     width: 200px;
-    transition: all 50ms ease;
+    height: auto;
     margin: 1rem;
+    box-shadow: 0 0 30px 1px #000;
+    transition: all 50ms ease;
 
     &:hover {
       transform: scale(1.1);
@@ -302,6 +302,7 @@ export default {
     align-items: flex-start;
     justify-content: flex-start;
   }
+
   &__title {
     margin: 0;
     font-size: 2rem;
@@ -311,30 +312,32 @@ export default {
       font-size: 3rem;
     }
   }
+
   &__tagline {
     margin: 0;
     font-weight: 100;
     font-style: italic;
   }
+
   &__genres {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 0.5rem;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
     margin: 1rem 0;
   }
 
   &__genre {
     display: flex;
-    justify-content: center;
-    text-align: center;
     align-items: center;
+    justify-content: center;
     padding: 0.5rem;
-    background: $lightbg;
     color: #fff;
+    text-align: center;
     text-decoration: none;
+    background: $lightbg;
 
     &:hover {
       background: $green;
@@ -372,9 +375,9 @@ export default {
   &__wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem 0;
+    justify-content: space-between;
   }
 
   &__link {
@@ -383,8 +386,8 @@ export default {
   }
 
   &__image {
-    height: 92px;
     width: 92px;
+    height: 92px;
     object-fit: cover;
     object-position: center 20%;
     border-radius: 50%;
@@ -392,15 +395,16 @@ export default {
 
   &__item {
     display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    gap: 1rem;
     flex-direction: row;
     flex-wrap: nowrap;
+    gap: 1rem;
+    align-items: center;
     justify-content: flex-start;
     width: 300px;
+    padding: 0.5rem;
     border-radius: 100px;
   }
+
   &__item:hover {
     background: $green;
   }
