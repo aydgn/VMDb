@@ -217,14 +217,14 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default {
-  setup() {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
-    const route = useRoute();
+  setup () {
+    const apiData = ref([])
+    const apikey = import.meta.env.VITE_KEY
+    const route = useRoute()
 
     const fetchApiData = async () => {
       await fetch(
@@ -232,20 +232,20 @@ export default {
       )
         .then(res => res.json())
         .then(data => {
-          apiData.value = data;
-          console.log(data);
+          apiData.value = data
+          console.log(data)
         })
         .catch(err => {
-          console.log(err);
-        });
-    };
+          console.log(err)
+        })
+    }
 
-    onMounted(fetchApiData());
+    onMounted(fetchApiData())
     return {
-      apiData,
-    };
-  },
-};
+      apiData
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

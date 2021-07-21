@@ -19,26 +19,26 @@
 </template>
 
 <script>
-import MenuIcon from "./MenuIcon.vue";
-import Logo from "../Logo.vue";
-import SearchBar from "./SearchBar.vue";
-import { ref } from "vue";
+import MenuIcon from './MenuIcon.vue'
+import Logo from '../Logo.vue'
+import SearchBar from './SearchBar.vue'
+import { ref } from 'vue'
 
 export default {
   components: { MenuIcon, Logo, SearchBar },
-  setup() {
-    let isMenuOpen = ref(false);
+  setup () {
+    const isMenuOpen = ref(false)
 
-    function toggleMenu() {
-      isMenuOpen.value = !isMenuOpen.value;
+    function toggleMenu () {
+      isMenuOpen.value = !isMenuOpen.value
     }
 
     return {
       isMenuOpen,
-      toggleMenu,
-    };
-  },
-};
+      toggleMenu
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

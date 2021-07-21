@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from 'vue'
 
 export default {
-  setup() {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
+  setup () {
+    const apiData = ref([])
+    const apikey = import.meta.env.VITE_KEY
 
     const fetchApiData = async () => {
       await fetch(
@@ -43,18 +43,18 @@ export default {
       )
         .then(res => res.json())
         .then(data => {
-          apiData.value = data.results.slice(0, 12);
+          apiData.value = data.results.slice(0, 12)
         })
         .catch(err => {
-          console.log(err);
-        });
-    };
-    onMounted(fetchApiData);
+          console.log(err)
+        })
+    }
+    onMounted(fetchApiData)
     return {
-      apiData,
-    };
-  },
-};
+      apiData
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

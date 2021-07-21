@@ -1,9 +1,10 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "serve": "vite preview",
     "build": "vite build",
-    "serve": "vite preview"
+    "lint": "vue-cli-service lint",
+    "dev": "vite"
   },
   "dependencies": {
     "vue": "^3.1.4",
@@ -11,7 +12,15 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/compiler-sfc": "^3.1.4",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^7.0.0",
     "sass": "^1.35.2",
     "stylelint": "^13.13.1",
     "stylelint-config-rational-order": "^0.1.2",

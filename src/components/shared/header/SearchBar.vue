@@ -11,29 +11,19 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 export default {
-  setup() {
-    let search = ref("");
-    let searchResults = ref("");
-    const apikey = import.meta.env.VITE_KEY;
-
-    // fetch search results from movie api
-    const getSearchResults = () => {
-      return fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=${apikey}&query=${search}`
-      )
-        .then(response => response.json())
-        .then(response => response.results.map(result => result.title));
-    };
+  setup () {
+    const search = ref('')
+    const searchResults = ref('')
 
     return {
       search,
-      searchResults,
-    };
-  },
-};
+      searchResults
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

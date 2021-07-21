@@ -12,12 +12,12 @@
 
 <script>
 export default {
-  emits: ["menuStatus"],
-  props: ["activeStatus"],
-  setup() {
-    return {};
-  },
-};
+  emits: ['menuStatus'],
+  props: ['activeStatus'],
+  setup () {
+    return {}
+  }
+}
 </script>
 <style lang="scss" scoped>
 .hamburger {
