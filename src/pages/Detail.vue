@@ -219,12 +219,14 @@
     </div>
   </section>
 
+  <!-- SIMILAR MOVIES -->
+
   <section class="similar container">
     <h2>Similar Movies</h2>
     <div class="similar__wrapper">
       <div
         class="similar__item"
-        v-for="movie in apiData.similar_movies.results"
+        v-for="movie in apiData.similar_movies.results.slice(0, 16)"
         :key="movie.id"
       >
         <a :href="`${movie.id}`">
@@ -361,7 +363,7 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     margin: 1rem 0;
   }
@@ -474,6 +476,7 @@ a {
     flex: 1;
     flex-direction: column;
     flex-wrap: wrap;
+    flex-basis: 130px;
     align-content: center;
     align-items: center;
     justify-content: flex-start;
