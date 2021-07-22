@@ -27,8 +27,8 @@ export default {
 
 <style lang="scss">
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

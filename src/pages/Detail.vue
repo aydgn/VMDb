@@ -280,6 +280,7 @@ export default {
 a {
   color: white;
   text-decoration: none;
+
   :hover {
     text-decoration: underline;
   }
@@ -402,6 +403,7 @@ a {
     display: flex;
     gap: 0.5rem;
   }
+
   &__social-icon {
     height: 2rem;
   }
@@ -469,14 +471,19 @@ a {
 
   &__item {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: flex-start;
-    text-align: center;
-    flex: 1 150px;
-    margin: 1rem;
-    align-items: center;
-    align-content: center;
     flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+
+    &:hover {
+      background: $green;
+    }
   }
 }
 </style>
