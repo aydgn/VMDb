@@ -29,7 +29,7 @@
           >
             {{ apiData.vote_average }} / 10
           </span>
-          <span class="hero__runtime" alt="Rating" title="Time">
+          <span class="hero__runtime" alt="Rating" title="Duration">
             <b>⏱</b>
             {{ apiData.runtime }} min
           </span>
@@ -57,8 +57,10 @@
           "{{ apiData.tagline }}"
         </h4>
         <p class="hero__overview">{{ apiData.overview }}</p>
+
+        <!-- SOCIAL ICONS -->
+
         <div class="hero__socials">
-          <!-- WEBSITE HOMEPAGE -->
           <a
             v-if="apiData.homepage"
             :href="`${apiData.homepage}`"
@@ -104,6 +106,7 @@
           </a>
 
           <!-- FACEBOOK -->
+
           <a
             v-if="apiData.external_ids.facebook_id"
             :href="`https://facebook.com/${apiData.external_ids.facebook_id}`"
@@ -192,6 +195,7 @@
           target="_blank"
         >
           <img
+            v-if="actor.profile_path"
             :src="`https://image.tmdb.org/t/p/w92${actor.profile_path}`"
             :alt="actor.name"
             :title="actor.name"
@@ -214,41 +218,73 @@
       </div>
     </div>
   </section>
+
+  <section class="similar container">
+    <h2>Similar Movies</h2>
+    <div class="similar__wrapper">
+      <div
+        class="similar__item"
+        v-for="movie in apiData.similar_movies.results"
+        :key="movie.id"
+      >
+        <a :href="`${movie.id}`">
+          <img
+            :src="`https://image.tmdb.org/t/p/w92${movie.poster_path}`"
+            :alt="movie.title"
+            :title="movie.title"
+            class="similar__image"
+            loading="lazy"
+          />
+          <div class="similar__name">
+            {{ movie.title }} ({{ movie.release_date.slice(0, 4) }})
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
-  setup () {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
-    const route = useRoute()
+  setup() {
+    const apiData = ref([]);
+    const apikey = import.meta.env.VITE_KEY;
+    const route = useRoute();
 
-    const fetchApiData = async () => {
+    async function fetchApiData() {
       await fetch(
         `https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${apikey}&append_to_response=similar_movies,credits,external_ids`
       )
-        .then(res => res.json())
-        .then(data => {
-          apiData.value = data
-          console.log(data)
+        .then((res) => res.json())
+        .then((data) => {
+          apiData.value = data;
+          console.log(data);
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
-    onMounted(fetchApiData())
+    onMounted(fetchApiData());
     return {
-      apiData
-    }
-  }
-}
+      apiData,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+a {
+  color: white;
+  text-decoration: none;
+  :hover {
+    text-decoration: underline;
+  }
+}
+
 .hero {
   display: flex;
   align-items: center;
@@ -380,11 +416,6 @@ export default {
     justify-content: space-between;
   }
 
-  &__link {
-    color: white;
-    text-decoration: none;
-  }
-
   &__image {
     width: 92px;
     height: 92px;
@@ -421,6 +452,31 @@ export default {
 
   &__role {
     color: $gray;
+  }
+}
+
+.similar {
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem;
+  }
+
+  &__image {
+    width: 92px;
+    height: 138px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    flex: 1 150px;
+    margin: 1rem;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
   }
 }
 </style>
