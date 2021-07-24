@@ -5,21 +5,19 @@
       <router-link
         v-for="(data, index) in apiData"
         :key="data.id"
-        :to="`/detail/${data.id}`"
+        :to="{ name: 'detail', params: { id: data.id } }"
         class="movieTile__link"
         draggable="false"
       >
         <img
           :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
-          :alt="data.name || data.title"
-          :title="data.name || data.title"
+          :alt="data.title"
+          :title="data.title"
           class="movieTile__poster"
           loading="lazy"
           draggable="false"
         />
-        <span class="movieTile__name">
-          {{ index + 1 }}. {{ data.name || data.title }}
-        </span>
+        <span class="movieTile__name"> {{ index + 1 }}. {{ data.title }} </span>
         <span class="movieTile__type" :title="data.media_type">
           {{ data.media_type == "tv" ? "📺" : "🎥" }}
         </span>
@@ -32,32 +30,32 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from "vue";
 
 export default {
   props: { title: String, apiQuery: String },
-  setup (props) {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
+  setup(props) {
+    const apiData = ref([]);
+    const apikey = import.meta.env.VITE_KEY;
 
     const fetchApiData = async () => {
       await fetch(
         `https://api.themoviedb.org/3/${props.apiQuery}?api_key=${apikey}`
       )
-        .then(res => res.json())
-        .then(data => {
-          apiData.value = data.results
+        .then((res) => res.json())
+        .then((data) => {
+          apiData.value = data.results;
         })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-    onMounted(fetchApiData)
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    onMounted(fetchApiData);
     return {
-      apiData
-    }
-  }
-}
+      apiData,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

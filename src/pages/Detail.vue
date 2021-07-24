@@ -229,7 +229,7 @@
         v-for="movie in apiData.similar_movies.results.slice(0, 16)"
         :key="movie.id"
       >
-        <a :href="`${movie.id}`">
+        <router-link :to="{ name: 'detail', params: { id: movie.id } }">
           <img
             :src="`https://image.tmdb.org/t/p/w92${movie.poster_path}`"
             :alt="movie.title"
@@ -240,7 +240,7 @@
           <div class="similar__name">
             {{ movie.title }} ({{ movie.release_date.slice(0, 4) }})
           </div>
-        </a>
+        </router-link>
       </div>
     </div>
   </section>
@@ -248,17 +248,16 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
 
 export default {
-  setup() {
+  props: ["id"],
+  setup(props) {
     const apiData = ref([]);
     const apikey = import.meta.env.VITE_KEY;
-    const route = useRoute();
 
     async function fetchApiData() {
       await fetch(
-        `https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${apikey}&append_to_response=similar_movies,credits,external_ids`
+        `https://api.themoviedb.org/3/movie/${props.id}?api_key=${apikey}&append_to_response=similar_movies,credits,external_ids`
       )
         .then((res) => res.json())
         .then((data) => {
