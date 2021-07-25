@@ -229,7 +229,7 @@
         v-for="movie in apiData.similar_movies.results.slice(0, 16)"
         :key="movie.id"
       >
-        <router-link :to="{ name: 'detail', params: { id: movie.id } }">
+        <a :href="`${movie.id}`">
           <img
             :src="`https://image.tmdb.org/t/p/w92${movie.poster_path}`"
             :alt="movie.title"
@@ -240,7 +240,7 @@
           <div class="similar__name">
             {{ movie.title }} ({{ movie.release_date.slice(0, 4) }})
           </div>
-        </router-link>
+        </a>
       </div>
     </div>
   </section>
