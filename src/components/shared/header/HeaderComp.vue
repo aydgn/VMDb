@@ -13,63 +13,69 @@
     <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
       <a href="#" class="header__link">Register</a>
-      <input
-        type="search"
-        placeholder="Search 🔎"
-        class="header__search"
-        name="q"
-        autocomplete="off"
-      />
+      <SearchBar />
     </nav>
   </header>
 </template>
 
 <script>
-import MenuIcon from "./MenuIcon.vue";
-import Logo from "../Logo.vue";
-import { ref } from "vue";
+import MenuIcon from './MenuIcon.vue'
+import Logo from '../Logo.vue'
+import SearchBar from './SearchBar.vue'
+import { ref } from 'vue'
 
 export default {
-  components: { MenuIcon, Logo },
-  setup() {
-    let isMenuOpen = ref(false);
+  components: { MenuIcon, Logo, SearchBar },
+  setup () {
+    const isMenuOpen = ref(false)
 
-    function toggleMenu() {
-      isMenuOpen.value = !isMenuOpen.value;
+    function toggleMenu () {
+      isMenuOpen.value = !isMenuOpen.value
     }
 
     return {
       isMenuOpen,
-      toggleMenu,
-    };
-  },
-};
+      toggleMenu
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: flex-start;
   padding: 1rem;
+  text-align: center;
 
   @include mq(tablet) {
     flex-direction: row;
-    font-weight: bold;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__bar {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
+
+    @include mq(tablet) {
+      margin-bottom: 0;
+    }
   }
 
   &__link {
+    padding: 1rem;
     color: #fff;
     text-decoration: none;
-    padding: 1rem;
     &:hover {
       background: $green;
     }
@@ -78,8 +84,8 @@ export default {
   &__nav {
     display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: stretch;
+    justify-content: center;
 
     @include mq(tablet) {
       display: flex;
@@ -87,25 +93,9 @@ export default {
       align-items: center;
     }
   }
+}
 
-  &__search {
-    padding: 1rem;
-    outline: 0;
-    border: 0;
-    border-radius: 0;
-    &:focus {
-      background: $green;
-      color: #fff;
-      font-weight: bold;
-      outline: 1px solid #fff;
-    }
-    &:focus::placeholder {
-      color: #fff;
-    }
-  }
-
-  .active {
-    display: flex;
-  }
+.active {
+  display: flex;
 }
 </style>

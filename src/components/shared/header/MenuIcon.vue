@@ -12,12 +12,12 @@
 
 <script>
 export default {
-  emits: ["menuStatus"],
-  props: ["activeStatus"],
-  setup() {
-    return {};
-  },
-};
+  emits: ['menuStatus'],
+  props: ['activeStatus'],
+  setup () {
+    return {}
+  }
+}
 </script>
 <style lang="scss" scoped>
 .hamburger {
@@ -41,9 +41,11 @@ export default {
   .line1 {
     top: 0px;
   }
+
   .line2 {
     top: 7px;
   }
+
   .line3 {
     top: 14px;
   }
@@ -54,9 +56,11 @@ export default {
     top: 14px;
     transform: rotate(45deg);
   }
+
   .line2 {
     transform: scale(0);
   }
+
   .line3 {
     top: 2px;
     transform: rotate(-45deg);

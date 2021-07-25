@@ -1,11 +1,11 @@
 <template>
   <section class="upcommingMovies container">
-    <h2>Upcomming Movies</h2>
+    <h2>Upcoming Movies</h2>
     <div class="upcommingMovies__tile">
-      <a
+      <router-link
         v-for="data in apiData"
         :key="data.id"
-        :href="data.id"
+        :to="`/detail/${data.id}`"
         class="upcommingMovies__link"
         draggable="false"
       >
@@ -24,7 +24,7 @@
           <!-- data.release_date in DD/MM/YYY format -->
           {{ data.release_date }}
         </span>
-      </a>
+      </router-link>
     </div>
   </section>
 </template>
@@ -41,11 +41,11 @@ export default {
       await fetch(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}`
       )
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           apiData.value = data.results.slice(0, 12);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     };
@@ -77,10 +77,10 @@ export default {
   }
 
   &__link {
+    position: relative;
     color: #fff;
     text-decoration: none;
     transition: all 50ms ease;
-    position: relative;
 
     &:hover {
       transform: scale(1.05);
@@ -89,29 +89,32 @@ export default {
 
   &__poster {
     width: 190px;
+
     &:hover {
       border: 2px solid $green;
     }
   }
+
   &__name {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(#000, 0.2);
-    padding: 5px;
-    width: 100%;
-    text-align: center;
-    text-shadow: 1px 1px 0 #404040;
-  }
-  &__date {
-    position: absolute;
-    bottom: 0px;
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(#000, 0.2);
     padding: 5px;
     text-align: center;
     text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
+  }
+
+  &__date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
   }
 }
 </style>

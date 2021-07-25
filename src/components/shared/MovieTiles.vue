@@ -5,21 +5,19 @@
       <router-link
         v-for="(data, index) in apiData"
         :key="data.id"
-        :to="`/detail/${data.id}`"
+        :to="{ name: 'detail', params: { id: data.id } }"
         class="movieTile__link"
         draggable="false"
       >
         <img
           :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
-          :alt="data.name || data.title"
-          :title="data.name || data.title"
+          :alt="data.title"
+          :title="data.title"
           class="movieTile__poster"
           loading="lazy"
           draggable="false"
         />
-        <span class="movieTile__name">
-          {{ index + 1 }}. {{ data.name || data.title }}
-        </span>
+        <span class="movieTile__name"> {{ index + 1 }}. {{ data.title }} </span>
         <span class="movieTile__type" :title="data.media_type">
           {{ data.media_type == "tv" ? "📺" : "🎥" }}
         </span>
@@ -44,11 +42,11 @@ export default {
       await fetch(
         `https://api.themoviedb.org/3/${props.apiQuery}?api_key=${apikey}`
       )
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           apiData.value = data.results;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     };
@@ -63,6 +61,7 @@ export default {
 <style lang="scss" scoped>
 .movieTile {
   background: $lightbg;
+
   &__tile {
     display: flex;
     flex-direction: row;
@@ -81,10 +80,10 @@ export default {
   }
 
   &__link {
+    position: relative;
     color: #fff;
     text-decoration: none;
     transition: all 50ms ease;
-    position: relative;
 
     &:hover {
       transform: scale(1.05);
@@ -93,37 +92,41 @@ export default {
 
   &__poster {
     width: 200px;
+    height: 300px;
     box-shadow: 0 5px 20px #000;
 
     &:hover {
       outline: 4px solid $green;
     }
   }
+
   &__name {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(#000, 0.2);
-    padding: 5px;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 5px;
     text-align: center;
     text-shadow: 1px 1px 0 #404040;
+    background-color: rgba(#000, 0.2);
   }
+
   &__type {
     position: absolute;
     bottom: 8px;
     left: 8px;
     padding: 5px;
-    background-color: rgba(#000, 0.2);
     font-size: 12px;
+    background-color: rgba(#000, 0.2);
   }
+
   &__rating {
     position: absolute;
-    bottom: 8px;
     right: 8px;
+    bottom: 8px;
     padding: 5px;
-    background-color: rgba(#000, 0.2);
     font-size: 12px;
+    background-color: rgba(#000, 0.2);
   }
 }
 </style>

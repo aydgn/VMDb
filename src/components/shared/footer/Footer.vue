@@ -33,22 +33,22 @@
 </template>
 
 <script>
-import Logo from "../Logo.vue";
+import Logo from '../Logo.vue'
 export default {
-  components: { Logo },
-};
+  components: { Logo }
+}
 </script>
 
 <style lang="scss" scoped>
 .footer {
   &__bar {
     display: flex;
-    gap: 0.5rem;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0.5rem;
     align-items: center;
-    text-align: center;
+    justify-content: space-between;
     padding: 1rem 0;
+    text-align: center;
 
     @include mq(mobile) {
       flex-direction: row;
@@ -58,6 +58,7 @@ export default {
   &__social {
     display: flex;
     gap: 0.5rem;
+
     img {
       height: 20px;
       filter: invert(100%);
