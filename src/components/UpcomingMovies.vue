@@ -1,6 +1,6 @@
 <template>
   <section class="upcommingMovies container">
-    <h2>Upcomming Movies</h2>
+    <h2>Upcoming Movies</h2>
     <div class="upcommingMovies__tile">
       <router-link
         v-for="data in apiData"
@@ -30,31 +30,31 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from "vue";
 
 export default {
-  setup () {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
+  setup() {
+    const apiData = ref([]);
+    const apikey = import.meta.env.VITE_KEY;
 
     const fetchApiData = async () => {
       await fetch(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}`
       )
-        .then(res => res.json())
-        .then(data => {
-          apiData.value = data.results.slice(0, 12)
+        .then((res) => res.json())
+        .then((data) => {
+          apiData.value = data.results.slice(0, 12);
         })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-    onMounted(fetchApiData)
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    onMounted(fetchApiData);
     return {
-      apiData
-    }
-  }
-}
+      apiData,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
