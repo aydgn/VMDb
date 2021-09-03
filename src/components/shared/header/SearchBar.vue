@@ -7,16 +7,15 @@
     autocomplete="off"
     v-model.lazy="search"
   />
-  <a href="">{{ searchResults }}</a>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from "vue"
 
 export default {
   setup () {
-    const search = ref('')
-    const searchResults = ref('')
+    const search = ref("")
+    const searchResults = ref("")
 
     return {
       search,

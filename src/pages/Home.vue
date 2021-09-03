@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import MovieTiles from '@/components/shared/MovieTiles.vue'
-import PopularActors from '@/components/shared/PopularActors.vue'
-import UpcomingMovies from '@/components/UpcomingMovies.vue'
+import MovieTiles from "@/components/shared/MovieTiles.vue"
+import PopularActors from "@/components/shared/PopularActors.vue"
+import UpcomingMovies from "@/components/UpcomingMovies.vue"
 
 export default {
   components: {

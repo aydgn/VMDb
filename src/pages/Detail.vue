@@ -247,30 +247,30 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"
 
 export default {
   props: ["id"],
-  setup(props) {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
+  setup (props) {
+    const apiData = ref([])
+    const apikey = import.meta.env.VITE_KEY
 
-    async function fetchApiData() {
+    async function fetchApiData () {
       await fetch(
         `https://api.themoviedb.org/3/movie/${props.id}?api_key=${apikey}&append_to_response=similar_movies,credits,external_ids`
       )
         .then((res) => res.json())
         .then((data) => {
-          apiData.value = data;
-        });
+          apiData.value = data
+        })
     }
 
-    onMounted(fetchApiData());
+    onMounted(fetchApiData())
     return {
-      apiData,
-    };
-  },
-};
+      apiData
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

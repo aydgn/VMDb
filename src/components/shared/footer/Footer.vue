@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Logo from '../Logo.vue'
+import Logo from "../Logo.vue"
 export default {
   components: { Logo }
 }
@@ -60,6 +60,7 @@ export default {
     gap: 0.5rem;
 
     img {
+      width: 20px;
       height: 20px;
       filter: invert(100%);
     }

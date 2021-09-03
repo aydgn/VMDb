@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"
 
 export default {
   props: { title: String, apiQuery: String },
-  setup(props) {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
+  setup (props) {
+    const apiData = ref([])
+    const apikey = import.meta.env.VITE_KEY
 
     const fetchApiData = async () => {
       await fetch(
@@ -44,18 +44,18 @@ export default {
       )
         .then((res) => res.json())
         .then((data) => {
-          apiData.value = data.results;
+          apiData.value = data.results
         })
         .catch((err) => {
-          console.log(err);
-        });
-    };
-    onMounted(fetchApiData);
+          console.log(err)
+        })
+    }
+    onMounted(fetchApiData)
     return {
-      apiData,
-    };
-  },
-};
+      apiData
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
