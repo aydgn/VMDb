@@ -1,3 +1,34 @@
+<script>
+import { onMounted, ref } from "vue";
+
+export default {
+  setup() {
+    const apiData = ref([]);
+    const apikey = import.meta.env.VITE_KEY;
+
+    const fetchApiData = async () => {
+      await fetch(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&region=TR`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          apiData.value = data.results.filter((movie) => movie.release_date.substring(0, 4) >= new Date().getFullYear());
+        })
+        .then(() => {
+          apiData.value.sort((a, b) => {
+            return b.release_date > a.release_date ? 1 : -1;
+          });
+        })
+        .catch((err) => { console.log(err) });
+    };
+    onMounted(fetchApiData);
+    return {
+      apiData,
+    };
+  },
+};
+</script>
+
 <template>
   <section class="upcommingMovies container">
     <h2>Upcoming Movies</h2>
@@ -22,40 +53,12 @@
         </span>
         <span class="upcommingMovies__date">
           <!-- data.release_date in DD/MM/YYY format -->
-          {{ data.release_date }}
+          {{ new Date(data.release_date).toLocaleDateString("tr-TR") }}
         </span>
       </router-link>
     </div>
   </section>
 </template>
-
-<script>
-import { onMounted, ref } from "vue";
-
-export default {
-  setup() {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
-
-    const fetchApiData = async () => {
-      await fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          apiData.value = data.results.slice(0, 12);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    onMounted(fetchApiData);
-    return {
-      apiData,
-    };
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 .upcommingMovies {

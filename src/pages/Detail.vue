@@ -1,3 +1,43 @@
+<script setup>
+import { onMounted, ref, } from "vue";
+import { useRoute, onBeforeRouteUpdate } from "vue-router";
+
+const route = useRoute()
+
+const props = defineProps({
+  id: String,
+});
+
+const apiData = ref([]);
+const apikey = import.meta.env.VITE_KEY;
+
+const id = ref(parseInt(route.params.id));
+
+async function fetchApiData(movieId) {
+  const URL = `https://api.themoviedb.org/3/movie/${movieId | props.value | id.value}?api_key=${apikey}&append_to_response=images,videos,similar_movies,credits,external_ids`;
+
+  await fetch(URL)
+    .then((res) => res.json())
+    .then((data) => { apiData.value = data })
+
+    apiData.value.images.backdrops.sort((a, b) => {
+      return b.vote_average > a.vote_average ? 1 : -1;
+    });
+
+    console.log(apiData.value);
+}
+
+onBeforeRouteUpdate((to, from) => {
+  id.value = parseInt(to.params.id);
+  fetchApiData(id.value);
+
+  window.scrollTo(0, 0);
+});
+
+onMounted(fetchApiData(id.value));
+
+</script>
+
 <template>
   <section
     class="hero"
@@ -29,7 +69,11 @@
           >
             {{ apiData.vote_average }} / 10
           </span>
-          <span class="hero__runtime" alt="Rating" title="Duration">
+          <span
+            class="hero__runtime"
+            alt="Rating"
+            title="Duration"
+          >
             <b>⏱</b>
             {{ apiData.runtime }} min
           </span>
@@ -53,7 +97,10 @@
 
       <div class="hero__details">
         <h1 class="hero__title">{{ apiData.title }}</h1>
-        <h4 v-if="apiData.tagline" class="hero__tagline">
+        <h4
+          v-if="apiData.tagline"
+          class="hero__tagline"
+        >
           "{{ apiData.tagline }}"
         </h4>
         <p class="hero__overview">{{ apiData.overview }}</p>
@@ -85,7 +132,7 @@
           <!-- IMDB -->
 
           <a
-            v-if="apiData.external_ids.imdb_id"
+            v-if="apiData.imdb_id"
             :href="`https://imdb.com/title/${apiData.external_ids.imdb_id}`"
             target="_blank"
             class="hero__social"
@@ -219,6 +266,38 @@
     </div>
   </section>
 
+  <!-- WALLPAPERs -->
+
+  <section class="wallpapers container">
+    <h2>Wallpapers</h2>
+    <div class="wallpapers__wrapper">
+      <div
+        v-for="image in apiData.images.backdrops.slice(0, 10)"
+        :key="image.file_path"
+        class="wallpapers__item"
+      >
+        <a
+          :href="`https://image.tmdb.org/t/p/original${image.file_path}`"
+          :alt="apiData.title"
+          target="_blank"
+          class="wallpapers__link"
+        >
+          <img
+            v-if="image.file_path"
+            :src="`https://image.tmdb.org/t/p/w200${image.file_path}`"
+            :alt="apiData.title"
+            :title="apiData.title"
+            class="wallpapers__image"
+            loading="lazy"
+            width="200"
+            height="113"
+          />
+          <span class="wallpapers__size"> {{ image.width }}x{{image.height}} </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- SIMILAR MOVIES -->
 
   <section class="similar container">
@@ -226,52 +305,24 @@
     <div class="similar__wrapper">
       <div
         class="similar__item"
-        v-for="movie in apiData.similar_movies.results.slice(0, 16)"
+        v-for="movie in apiData.similar_movies.results.slice(0, 20)"
         :key="movie.id"
       >
-        <a :href="`${movie.id}`">
+        <router-link :to="{ name: 'detail', params: { id: movie.id } }">
           <img
             :src="`https://image.tmdb.org/t/p/w92${movie.poster_path}`"
             :alt="movie.title"
             :title="movie.title"
             class="similar__image"
+            height="92"
+            width="138"
             loading="lazy"
           />
-          <div class="similar__name">
-            {{ movie.title }} ({{ movie.release_date.slice(0, 4) }})
-          </div>
-        </a>
+        </router-link>
       </div>
     </div>
   </section>
 </template>
-
-<script>
-import { onMounted, ref } from "vue";
-
-export default {
-  props: ["id"],
-  setup(props) {
-    const apiData = ref([]);
-    const apikey = import.meta.env.VITE_KEY;
-
-    async function fetchApiData() {
-      await fetch(
-        `https://api.themoviedb.org/3/movie/${props.id}?api_key=${apikey}&append_to_response=similar_movies,credits,external_ids`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          apiData.value = data;
-        });
-    }
-
-    onMounted(fetchApiData());
-    return {
-      apiData,
-    };
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 a {
@@ -281,6 +332,10 @@ a {
   :hover {
     text-decoration: underline;
   }
+}
+
+section {
+  padding: 2rem 0;
 }
 
 .hero {
@@ -406,6 +461,54 @@ a {
   }
 }
 
+.wallpapers {
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+
+
+    @include mq(tablet) {
+      flex: 1;
+    }
+
+    & a {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    width: 200px;
+    height: auto;
+    margin: 1rem;
+    box-shadow: 0 0 30px 1px #000;
+    transition: all 50ms ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__size {
+    margin: 0;
+    font-size: 0.8rem;
+    text-shadow: #fff 0 0 5px;
+  }
+}
+
 .cast {
   &__wrapper {
     display: flex;
@@ -459,29 +562,31 @@ a {
     display: flex;
     flex-wrap: wrap;
     margin: -1rem;
-  }
-
-  &__image {
-    width: 92px;
-    height: 138px;
+    padding: 1rem 0;
   }
 
   &__item {
     display: flex;
-    flex: 1;
     flex-direction: column;
     flex-wrap: wrap;
     flex-basis: 130px;
     align-content: center;
     align-items: center;
     justify-content: flex-start;
-    margin: 1rem;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
+    border-radius: 18px;
 
     &:hover {
       background: $green;
     }
+  }
+
+  &__image {
+    width: 92px;
+    height: 138px;
+    border-radius: 10px;
+    margin: 0.5rem;
   }
 }
 </style>

@@ -13,18 +13,21 @@
           <img
             src="../../../assets/images/social-icons/facebook.svg"
             alt="Facebook Logo"
+            loading="lazy"
           />
         </a>
         <a href="#">
           <img
             src="../../../assets/images/social-icons/instagram.svg"
             alt="Instagram Logo"
+            loading="lazy"
           />
         </a>
         <a href="#">
           <img
             src="../../../assets/images/social-icons/twitter.svg"
             alt="Twitter Logo"
+            loading="lazy"
           />
         </a>
       </div>

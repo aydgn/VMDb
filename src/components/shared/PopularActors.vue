@@ -1,3 +1,31 @@
+<script>
+import { onMounted, ref } from 'vue'
+
+export default {
+  setup () {
+    const apiData = ref([])
+    const apikey = import.meta.env.VITE_KEY
+
+    const fetchApiData = async () => {
+      await fetch(
+        `https://api.themoviedb.org/3/person/popular?api_key=${apikey}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          apiData.value = data.results.slice(0, 14)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    onMounted(fetchApiData)
+    return {
+      apiData
+    }
+  }
+}
+</script>
+
 <template>
   <section class="popularActors container">
     <h2>Popular Actors</h2>
@@ -23,36 +51,10 @@
   </section>
 </template>
 
-<script>
-import { onMounted, ref } from 'vue'
-
-export default {
-  setup () {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
-
-    const fetchApiData = async () => {
-      await fetch(
-        `https://api.themoviedb.org/3/person/popular?api_key=${apikey}`
-      )
-        .then(res => res.json())
-        .then(data => {
-          apiData.value = data.results.slice(0, 12)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-    onMounted(fetchApiData)
-    return {
-      apiData
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 .popularActors {
+  padding: 2rem 0;
+
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
