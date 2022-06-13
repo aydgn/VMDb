@@ -1,6 +1,11 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-rational-order"
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recommended-vue/scss"],
+  "overrides": [
+    {
+      "files": ["*.vue", "**/*.vue"],
+      "rules": {
+        "unit-allowed-list": ["em", "rem", "s"]
+      }
+    }
   ]
 }

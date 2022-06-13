@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 
 export default {
-  setup () {
+  setup() {
     const apiData = ref([])
     const apikey = import.meta.env.VITE_KEY
 
@@ -36,12 +36,18 @@ export default {
         :key="person.id"
         class="popularActors__actor"
       >
+        <img
+          class="popularActors__photo"
+          v-if="person.profile_path"
+          :src="`https://image.tmdb.org/t/p/w45${person.profile_path}`"
+          height="48"
+          width="48"
+          loading="lazy"
+        />
         <span
+          v-else
           class="popularActors__initials"
-          :style="`
-            background-image: url(https://image.tmdb.org/t/p/w92${person.profile_path});
-          `"
-        ></span>
+        > {{ person.name.split(' ')[0][0] }}{{ person.name.split(' ')[1][0] }} </span>
 
         <span class="popularActors__name">
           {{ person.name }}
@@ -79,16 +85,27 @@ export default {
     background: #353535;
   }
 
-  &__initials {
+  &__photo {
     width: 3rem;
     height: 3rem;
     margin-right: 0.5rem;
-    padding: 0.5rem;
     background: $green;
-    background-position: center 20%;
-    background-size: 100%;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
     border-radius: 99px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+  }
+
+  &__initials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    background-color: $green;
+    border-radius: 99px;
+    margin-right: 0.5rem;
   }
 }
 </style>
