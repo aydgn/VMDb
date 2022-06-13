@@ -6,7 +6,7 @@
     </div>
 
     <nav class="header__nav" :class="{ active: isMenuOpen }">
-      <router-link to="/upcoming" class="header__link">Upcoming</router-link>
+      <!-- <router-link to="/upcoming" class="header__link">Upcoming</router-link> -->
     </nav>
     <nav class="header__nav" :class="{ active: isMenuOpen }">
       <a href="#" class="header__link">Login</a>
