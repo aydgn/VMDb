@@ -1,23 +1,14 @@
 <template>
   <HeaderComp />
-  <main class="main">
+  <main>
     <router-view></router-view>
   </main>
   <Footer />
 </template>
 
-<script>
-import HeaderComp from "@/components/shared/header/HeaderComp.vue"
-import Footer from "@/components/shared/footer/Footer.vue"
-
-export default {
-  components: {
-    HeaderComp,
-    Footer
-  },
-
-  setup () {}
-}
+<script setup>
+import HeaderComp from '@/components/shared/header/HeaderComp.vue'
+import Footer from '@/components/shared/footer/Footer.vue'
 </script>
 
 <style lang="scss">
@@ -34,6 +25,7 @@ body {
   color: #fff;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
+  font-display: swap;
   background: $bg;
 }
 
@@ -47,7 +39,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  margin: 0 auto;
 }
 
 @media (min-width: 1400px) {

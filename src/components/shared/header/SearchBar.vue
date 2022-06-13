@@ -5,24 +5,10 @@
     class="search"
     name="q"
     autocomplete="off"
-    v-model.lazy="search"
   />
 </template>
 
 <script>
-import { ref } from "vue"
-
-export default {
-  setup () {
-    const search = ref("")
-    const searchResults = ref("")
-
-    return {
-      search,
-      searchResults
-    }
-  }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +20,6 @@ export default {
 
   &:focus {
     color: #fff;
-    font-weight: bold;
     background: $green;
     outline: 1px solid #fff;
   }

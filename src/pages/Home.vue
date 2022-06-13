@@ -1,14 +1,3 @@
-<template>
-  <MovieTiles
-    title="This Week's Trending Movies"
-    apiQuery="trending/movie/week"
-  />
-  <MovieTiles title="Today's Trending Movies" apiQuery="trending/movie/day" />
-  <PopularActors />
-  <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
-  <UpcomingMovies />
-</template>
-
 <script>
 import MovieTiles from "@/components/shared/MovieTiles.vue"
 import PopularActors from "@/components/shared/PopularActors.vue"
@@ -24,6 +13,17 @@ export default {
   setup () {}
 }
 </script>
+
+<template>
+  <MovieTiles
+    title="This Week's Trending Movies"
+    apiQuery="trending/movie/week"
+  />
+  <MovieTiles title="Today's Trending Movies" apiQuery="trending/movie/day" />
+  <PopularActors />
+  <MovieTiles title="Top Rated Movies" apiQuery="movie/top_rated" />
+  <UpcomingMovies />
+</template>
 
 <style lang="scss">
 *,

@@ -1,6 +1,38 @@
+<script setup>
+import { onMounted, ref } from "vue";
+
+const props = defineProps({
+  title: {
+    type: String,
+    default: "Upcoming Movies",
+  },
+  apiQuery: {
+    type: String,
+  },
+});
+
+const apiData = ref([]);
+const apikey = import.meta.env.VITE_KEY;
+
+const fetchApiData = async () => {
+  await fetch(
+    `https://api.themoviedb.org/3/${props.apiQuery}?api_key=${apikey}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      apiData.value = data.results;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+onMounted(fetchApiData);
+</script>
+
 <template>
   <section class="movieTile">
-    <h2 class="container">{{ title }}</h2>
+    <h2 class="container">{{ props.title }}</h2>
     <div class="movieTile__tile container">
       <router-link
         v-for="(data, index) in apiData"
@@ -13,50 +45,29 @@
           :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
           :alt="data.title"
           :title="data.title"
+          height="300"
+          width="200"
           class="movieTile__poster"
           loading="lazy"
           draggable="false"
         />
-        <span class="movieTile__name"> {{ index + 1 }}. {{ data.title }} </span>
-        <span class="movieTile__type" :title="data.media_type">
-          {{ data.media_type == "tv" ? "📺" : "🎥" }}
+        <span class="movieTile__name">{{ data.title }}</span>
+        <span
+          class="movieTile__year"
+          :title="data.release_date"
+        >
+          {{ data.release_date.substring(0, 4) }}
         </span>
-        <span class="movieTile__rating" :title="data.vote_average">
+        <span
+          class="movieTile__rating"
+          :title="data.vote_average"
+        >
           {{ data.vote_average }} / 10
         </span>
       </router-link>
     </div>
   </section>
 </template>
-
-<script>
-import { onMounted, ref } from "vue"
-
-export default {
-  props: { title: String, apiQuery: String },
-  setup (props) {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
-
-    const fetchApiData = async () => {
-      await fetch(
-        `https://api.themoviedb.org/3/${props.apiQuery}?api_key=${apikey}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          apiData.value = data.results
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-    onMounted(fetchApiData)
-    return {
-      apiData
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 .movieTile {
@@ -83,7 +94,7 @@ export default {
     position: relative;
     color: #fff;
     text-decoration: none;
-    transition: all 50ms ease;
+    transition: all 50ms ease-in-out;
 
     &:hover {
       transform: scale(1.05);
@@ -96,7 +107,7 @@ export default {
     box-shadow: 0 5px 20px #000;
 
     &:hover {
-      outline: 4px solid $green;
+      border: 4px solid $green;
     }
   }
 
@@ -107,26 +118,26 @@ export default {
     width: 100%;
     padding: 5px;
     text-align: center;
-    text-shadow: 1px 1px 0 #404040;
+    text-shadow: 1px 1px 2px #000000;
     background-color: rgba(#000, 0.2);
   }
 
-  &__type {
+  &__year,
+  &__rating {
     position: absolute;
-    bottom: 8px;
-    left: 8px;
     padding: 5px;
     font-size: 12px;
-    background-color: rgba(#000, 0.2);
+    text-shadow: 1px 1px 2px #000000;
+  }
+
+  &__year {
+    bottom: 0;
+    left: 0;
   }
 
   &__rating {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    padding: 5px;
-    font-size: 12px;
-    background-color: rgba(#000, 0.2);
+    right: 0;
+    bottom: 0;
   }
 }
 </style>
