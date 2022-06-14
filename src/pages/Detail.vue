@@ -23,8 +23,6 @@ async function fetchApiData(movieId) {
     apiData.value.images.backdrops.sort((a, b) => {
       return b.vote_average > a.vote_average ? 1 : -1;
     });
-
-    console.log(apiData.value);
 }
 
 onBeforeRouteUpdate((to, from) => {

@@ -9,7 +9,6 @@ const fetchApiData = async () => {
   )
     .then((res) => res.json())
     .then((data) => { apiData.value = data.results })
-    .then(() => console.log(apiData))
     .catch((err) => { console.log(err) });
 };
 

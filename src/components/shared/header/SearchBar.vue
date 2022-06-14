@@ -8,9 +8,6 @@
   />
 </template>
 
-<script>
-</script>
-
 <style lang="scss" scoped>
 .search {
   padding: 1rem;

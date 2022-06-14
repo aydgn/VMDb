@@ -1,29 +1,24 @@
-<script>
+<script setup>
 import { onMounted, ref } from 'vue'
 
-export default {
-  setup() {
-    const apiData = ref([])
-    const apikey = import.meta.env.VITE_KEY
 
-    const fetchApiData = async () => {
-      await fetch(
-        `https://api.themoviedb.org/3/person/popular?api_key=${apikey}`
-      )
-        .then(res => res.json())
-        .then(data => {
-          apiData.value = data.results.slice(0, 14)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-    onMounted(fetchApiData)
-    return {
-      apiData
-    }
-  }
+const apiData = ref([])
+const apikey = import.meta.env.VITE_KEY
+
+const fetchApiData = async () => {
+  await fetch(
+    `https://api.themoviedb.org/3/person/popular?api_key=${apikey}`
+  )
+    .then(res => res.json())
+    .then(data => {
+      apiData.value = data.results.slice(0, 14)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
+onMounted(fetchApiData)
+
 </script>
 
 <template>

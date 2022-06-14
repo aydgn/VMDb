@@ -1,3 +1,21 @@
+<script setup>
+
+const props = defineProps({
+  activeStatus: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emits = defineEmits({
+  menuStatus: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+</script>
+
 <template>
   <div
     class="hamburger"
@@ -9,16 +27,6 @@
     <div class="line3"></div>
   </div>
 </template>
-
-<script>
-export default {
-  emits: ['menuStatus'],
-  props: ['activeStatus'],
-  setup () {
-    return {}
-  }
-}
-</script>
 <style lang="scss" scoped>
 .hamburger {
   display: block;
