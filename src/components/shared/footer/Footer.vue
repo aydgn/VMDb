@@ -3,7 +3,7 @@
     <hr class="footer__divider" />
     <div class="footer__bar">
       <div class="footer__logo">
-        <Logo />
+        <Logo lazy="true" />
       </div>
       <div class="footer__copyright">
         &copy; VMDb {{ new Date().getFullYear() }}
@@ -35,11 +35,8 @@
   </footer>
 </template>
 
-<script>
+<script setup>
 import Logo from "../Logo.vue"
-export default {
-  components: { Logo }
-}
 </script>
 
 <style lang="scss" scoped>

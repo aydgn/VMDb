@@ -72,6 +72,7 @@ onMounted(fetchApiData);
 <style lang="scss" scoped>
 .movieTile {
   background: $lightbg;
+  min-height: 370px;
 
   &__tile {
     display: flex;

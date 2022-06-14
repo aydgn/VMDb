@@ -1,10 +1,28 @@
+<script setup>
+
+
+const props = defineProps({
+  lazy: {
+    type: Boolean,
+    default: false
+  },
+})
+
+</script>
+
 <template>
-  <router-link :to="{ name: 'home' }" class="logo">
+  <router-link
+    :to="{ name: 'home' }"
+    class="logo"
+  >
     <img
       src="../../assets/images/vmdb.svg"
       alt="VMDb Logo"
       title="VMDb - Vue Movie Database"
       class="logo__img"
+      :loading="props.lazy ? 'lazy' : 'eager'"
+      width="88"
+      height="26"
     />
   </router-link>
 </template>

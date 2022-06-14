@@ -81,6 +81,7 @@ export default {
     padding: 0.5rem;
     background: $gray;
     border-radius: 0.25rem;
+    min-height: 64px;
   }
 
   &__actor:hover {
