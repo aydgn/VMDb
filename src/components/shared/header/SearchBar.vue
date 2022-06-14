@@ -1,3 +1,5 @@
+script
+
 <template>
   <input
     type="search"
