@@ -52,7 +52,7 @@ onMounted(fetchApiData(id.value));
           target="_blank"
         >
           <img
-            :src="`https://image.tmdb.org/t/p/w200${apiData.poster_path}`"
+            :src="`https://image.tmdb.org/t/p/w400${apiData.poster_path}`"
             :alt="apiData.title"
             :title="apiData.title"
             class="hero__image"
@@ -333,7 +333,7 @@ a {
 }
 
 section {
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
 .hero {

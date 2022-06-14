@@ -1,28 +1,8 @@
-<script setup>
-
-const props = defineProps({
-  lazy: {
-    type: Boolean,
-    default: false
-  },
-})
-
-</script>
-
 <template>
-  <router-link
-    :to="{ name: 'home' }"
-    class="logo"
-  >
-    <img
-      src="../../assets/images/vmdb.svg"
-      alt="VMDb Logo"
-      title="VMDb - Vue Movie Database"
-      class="logo__img"
-      :loading="props.lazy ? 'lazy' : 'eager'"
-      width="88"
-      height="26"
-    />
+  <router-link :to="{ name: 'home' }" class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" width="140" height="41">
+      <text x="4" y="38">VMDb</text>
+    </svg>
   </router-link>
 </template>
 
@@ -32,9 +12,17 @@ const props = defineProps({
   align-items: center;
   justify-content: center;
 
-  &__img {
-    width: 88px;
-    height: 26px;
+  svg {
+    font: 900 3rem Arial, Helvetica, sans-serif;
+
+    text {
+      fill: $green;
+      stroke: #fff;
+      stroke-width: 4px;
+      paint-order: stroke;
+    }
   }
+
+
 }
 </style>
