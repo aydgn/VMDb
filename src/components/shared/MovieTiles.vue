@@ -42,7 +42,7 @@ onMounted(fetchApiData);
         draggable="false"
       >
         <img
-          :src="`https://image.tmdb.org/t/p/w200${data.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w400${data.poster_path}`"
           :alt="data.title"
           :title="data.title"
           height="300"

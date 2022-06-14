@@ -3,7 +3,7 @@
     <hr class="footer__divider" />
     <div class="footer__bar">
       <div class="footer__logo">
-        <Logo lazy="true" />
+        <Logo :lazy=true />
       </div>
       <div class="footer__copyright">
         &copy; VMDb {{ new Date().getFullYear() }}

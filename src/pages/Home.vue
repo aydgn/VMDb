@@ -38,8 +38,7 @@ body {
   padding: 0;
   color: #fff;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-display: swap;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   background: $bg;
 }
 
