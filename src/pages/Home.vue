@@ -39,6 +39,7 @@ body {
   color: #fff;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
+  font-display: swap;
   background: $bg;
 }
 
