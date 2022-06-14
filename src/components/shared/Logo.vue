@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'home' }" class="logo">
+  <router-link :to="{ name: 'home' }" class="logo" aria-label="Home" title="VMDb">
     <svg xmlns="http://www.w3.org/2000/svg" width="140" height="41">
       <text x="4" y="38">VMDb</text>
     </svg>
