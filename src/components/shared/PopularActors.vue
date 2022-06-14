@@ -40,6 +40,8 @@ export default {
           class="popularActors__photo"
           v-if="person.profile_path"
           :src="`https://image.tmdb.org/t/p/w45${person.profile_path}`"
+          :alt="person.name"
+          :title="person.name"
           height="48"
           width="48"
           loading="lazy"
