@@ -48,7 +48,7 @@ onMounted(fetchApiData);
           height="300"
           width="200"
           class="movieTile__poster"
-          loading="lazy"
+          :loading=" index === 0 ? 'eager' : 'lazy'"
           draggable="false"
         />
         <span class="movieTile__name">{{ data.title }}</span>
