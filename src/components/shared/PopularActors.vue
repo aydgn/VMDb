@@ -85,8 +85,6 @@ onMounted(fetchApiData)
   }
 
   &__photo {
-    width: 3rem;
-    height: 3rem;
     margin-right: 0.5rem;
     background: $green;
     height: 48px;
