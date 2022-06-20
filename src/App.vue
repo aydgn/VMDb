@@ -1,6 +1,6 @@
 <template>
   <HeaderComp />
-  <main>
+  <main style="min-height: 100vh;">
     <router-view></router-view>
   </main>
   <Footer />
