@@ -31,7 +31,7 @@ onMounted(fetchApiData);
 </script>
 
 <template>
-  <section class="movieTile">
+  <section class="movieTile" style="min-height: 375px;">
     <h2 class="container">{{ props.title }}</h2>
     <div class="movieTile__tile container">
       <router-link
@@ -72,7 +72,6 @@ onMounted(fetchApiData);
 <style lang="scss" scoped>
 .movieTile {
   background: $lightbg;
-  min-height: 375px;
 
   &__tile {
     display: flex;

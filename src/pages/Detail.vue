@@ -39,7 +39,7 @@ onMounted(fetchApiData(id.value));
 <template>
   <section
     class="hero"
-    :style="`background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, #000 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path});`"
+    :style="`background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, #000 100%) ,url(https://image.tmdb.org/t/p/w1280${apiData.backdrop_path}); min-height: 650px;`"
   >
     <div class="hero__info container">
       <!-- POSTER  -->
@@ -245,6 +245,8 @@ onMounted(fetchApiData(id.value));
             :alt="actor.name"
             :title="actor.name"
             class="cast__image"
+            height="92px"
+            width="92px"
             loading="lazy"
           />
         </a>
@@ -340,7 +342,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 650px;
   padding: 2rem 1rem;
   background-repeat: no-repeat;
   background-position: center 20%;
